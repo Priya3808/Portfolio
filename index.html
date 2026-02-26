@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priya | Advanced Portfolio</title>
+
+<link href="https://photos.app.goo.gl/racSdM7yCmJfHN1w5"="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Animated Background Glow */
+body::before{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    background:radial-gradient(circle,#00f5ff,transparent);
+    top:-100px;
+    left:-100px;
+    filter:blur(120px);
+    animation:moveGlow 8s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes moveGlow{
+    from{transform:translate(0,0);}
+    to{transform:translate(200px,200px);}
+}
+
+/* ================= HEADER ================= */
+
+header{
+    text-align:center;
+    padding:60px 20px;
+}
+
+header h1{
+    font-family:'Orbitron', sans-serif;
+    font-size:42px;
+    letter-spacing:3px;
+    animation:fadeDown 1s ease-in-out;
+}
+
+/* Typing Animation */
+.typing{
+    border-right:3px solid #00f5ff;
+    white-space:nowrap;
+    overflow:hidden;
+    width:0;
+    animation:typing 4s steps(30,end) forwards, blink .8s infinite;
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:260px}
+}
+
+@keyframes blink{
+    50%{border-color:transparent}
+}
+
+/* ================= NAVIGATION ================= */
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    background:rgba(0,0,0,0.6);
+    padding:15px;
+    backdrop-filter:blur(10px);
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+    position:relative;
+    transition:.4s;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    height:2px;
+    width:0%;
+    background:#00f5ff;
+    left:0;
+    bottom:-5px;
+    transition:.4s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+nav a:hover{
+    color:#00f5ff;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:80px 10%;
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 1s forwards;
+}
+
+section:nth-child(even){
+    animation-delay:.3s;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:32px;
+    position:relative;
+}
+
+h2::after{
+    content:"";
+    width:60px;
+    height:3px;
+    background:#00f5ff;
+    display:block;
+    margin:10px auto;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.about img{
+    width:250px;
+    border-radius:20px;
+    box-shadow:0 0 30px #00f5ff55;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+/* ================= SKILLS ================= */
+
+.skills ul{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:15px;
+}
+
+.skills li{
+    background:rgba(255,255,255,0.1);
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    transition:.4s;
+}
+
+.skills li:hover{
+    background:#00f5ff;
+    color:black;
+    transform:scale(1.1);
+}
+
+/* ================= PROJECTS ================= */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    transition:.5s;
+}
+
+.card img{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.card:hover{
+    transform:rotateY(10deg) scale(1.05);
+    box-shadow:0 0 25px #00f5ff;
+}
+
+/* ================= CONTACT ================= */
+
+form{
+    max-width:500px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input, textarea{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+}
+
+button{
+    padding:12px;
+    background:#00f5ff;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.4s;
+}
+
+button:hover{
+    background:white;
+    transform:scale(1.05);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:black;
+    margin-top:40px;
+}
+
+/* ================= MOBILE DESIGN ================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    header h1{
+        font-size:28px;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+
+    .about{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>PRIYA </h1>
+    <p class="typing">Web Developer | UI Designer</p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+    <h2>About </h2>
+    <div class="about-text">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600" alt="Web Developer" class="profile-img">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600" alt="Developer Workspace">
+        
+        <p>
+
+            <ul>
+
+    <li>Creative and passionate web developer</li>
+    <li>Skilled in HTML, CSS, and JavaScript</li>
+    <li>Build responsive and modern websites</li>
+    <li>I enjoy creating responsive and visually appealing websites</li>
+    <li>I am passionate about creating clean UI and seamless user experiences</li>
+    <li>Goal: Become a Good Web Developer</li>
+
+            </ul>
+
+</div>
+  </ul>
+</div>
+    </div>
+</section>
+
+<section id="skills" class="skills">
+    <h2>Skills</h2>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Flexbox</li>
+        <li>Grid</li>
+        <li>Learning Platform</li>
+        <li>Travel Website</li>
+    </ul>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+
+        <div class="card">
+  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Food Delivery App">
+  <h3>Food Delivery App</h3>
+  <p>Responsive food ordering website with modern UI design.</p>
+</div>
+
+       <div class="card">
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Online Learning">
+  <h3>Online Learning Platform</h3>
+  <p>Educational website for online courses and tutorials.</p>
+</div>
+
+        <div class="card">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Travel Website">
+  <h3>Travel Booking Website</h3>
+  <p>Modern travel booking website with destination gallery.</p>
+</div>
+
+    <div class="card">
+  <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438" alt="Fitness Dashboard">
+  <h3>Fitness Tracker Dashboard</h3>
+  <p>Interactive dashboard for tracking workouts and health data.</p>
+</div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    © 2026 Priya |Aitch Nu Global Technologies
+</footer>
+
+</body>
+</html>
